@@ -7,7 +7,7 @@ opts = Variables()
 
 opts.Add(BoolVariable('debug','debug build',True))
 opts.Add(BoolVariable('test','copy output to test project',True))
-opts.Add(EnumVariable('platform','can be osx, linux (x11) or windows (win64)','',('osx','x11','win64','win32','x11_32'),
+opts.Add(EnumVariable('platform','can be osx, linux (x11) or windows (win64), x11_32 or win32','',('osx','linux','x11','windows','win64','win32','x11_32'),
                                         map={'linux':'x11','windows':'win64'}))
 opts.Add(PathVariable('toolchainbin', 'Path to the cross compiler toolchain bin directory. Only needed cross compiling and the toolchain isn\'t installed.', '', PathVariable.PathAccept))
 opts.Add(PathVariable('thirdparty', 'Path containing the ffmpeg libs', 'thirdparty', PathVariable.PathAccept))

@@ -4,14 +4,25 @@ func _ready() -> void:
 	var d := Directory.new()
 	var mb := $MenuButton as MenuButton
 	var p := mb.get_popup()
+	var args := OS.get_cmdline_args()
+	var video := ''
+	for a in args:
+		if a.begins_with('--video='):
+			video = a.replace('--video=', '')
 	if d.open('res://test_samples') == OK:
 		d.list_dir_begin(true)
 		var file_name = d.get_next()
+		var extensions = ResourceLoader.get_recognized_extensions_for_type('VideoStreamGDNative')
+		print('scanning for videos with these extensions: %s' % [extensions])
 		while file_name != '':
-			if !file_name.ends_with('.txt'):
+			var ext = file_name.get_extension()
+
+			if ext in extensions:
 				p.add_item(file_name)
 			file_name = d.get_next()
-	if p.get_item_count():
+	if video:
+		_open(video)
+	elif p.get_item_count():
 		_open(p.get_item_text(p.get_item_count() - 1))
 	var err = p.connect('index_pressed', self, '_on_menubutton_index_pressed')
 	assert(err == OK)

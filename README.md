@@ -42,14 +42,16 @@ git submodule update --init --recursive
 
 4. [Install docker](https://docs.docker.com/get-docker/)
 
-5. Extract MacOSX sdk from the XCode
+5. Extract MacOSX sdk from the XCode (if you are building for osx)
 
 * For osx you must download XCode 7 and extract/generate MacOSX10.11.sdk.tar.gz and copy it to ./darwin_sdk/ by following these instructions: https://github.com/tpoechtrager/osxcross#packaging-the-sdk
   * NOTE: for darwin15 support use: https://developer.apple.com/download/more/?name=Xcode%207.3.1
 * To use a different MacOSX*.*.sdk.tar.gz sdk set the XCODE_SDK environment variable. <!-- TODO: test this -->
 * e.g. `XCODE_SDK=$PWD/darwin_sdk/MacOSX10.15.sdk.tar.gz ./build_gdnative.sh`
 
-5. run `build_gdnative.sh` (Be sure to [add your user to the `docker` group](https://docs.docker.com/engine/install/linux-postinstall/) or you will have to run as `sudo` (which is bad))
+5. run `build_gdnative.sh`.. Prefix with e.g. `PLATFORM=win64` to build only for win64
+
+Be sure to [add your user to the `docker` group](https://docs.docker.com/engine/install/linux-postinstall/) or you will have to run as `sudo` (which is bad)
 
 TODO:
 

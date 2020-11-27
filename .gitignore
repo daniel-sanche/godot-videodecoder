@@ -10,3 +10,4 @@ thirdparty/
 *.obj
 *.dll
 /target
+/test/test_samples/*
